@@ -1,3 +1,5 @@
+# Web Scraping from http://www.yellowpages.com
+
 import requests
 from bs4 import BeautifulSoup
 
