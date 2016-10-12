@@ -4,16 +4,7 @@ from bs4 import BeautifulSoup
 url = "http://www.yellowpages.com/search?search_terms=cofee&geo_location_terms=Los%20Angeles%2C%20CA"
 url2 = "http://www.yellowpages.com/search?search_terms=cofee&geo_location_terms=Los%20Angeles%2C%20CA&page=2"
 
-def get_data_from_url(url, page):
-	for i in range(page):
-		u = url;
-		if i > 0:
-			u = url + ("&page=" + str(i+1))
-			print(u)
-
-
-r=r
-get_data_from_url(url, 10);
+r = requests.get(url)
 print(r.content)
 
 soup = BeautifulSoup(r.content, "html.parser")
@@ -66,7 +57,9 @@ for item in g_data:
 		pass
 
 	try:
-		print("Address Locality : " + item.contents[1].find_all("span", {"itemprop": "addressLocality"})[0].text.replace(',', ''))
+		print(
+			"Address Locality : " + item.contents[1].find_all("span", {"itemprop": "addressLocality"})[0].text.replace(
+				',', ''))
 	except:
 		pass
 
@@ -89,9 +82,3 @@ for item in g_data:
 		print("Categories : " + item.contents[2].find_all("a", {"class": "categories"})[0].text)
 	except:
 		pass
-
-
-
-
-
-
