@@ -4,10 +4,10 @@ from bs4 import BeautifulSoup
 url = "http://www.yellowpages.com/search?search_terms=cofee&geo_location_terms=Los+Angeles%2C+CA"
 r = requests.get(url);
 
-# print(r.content)
+print(r.content)
 
 soup = BeautifulSoup(r.content)
-# print(soup)
+print(soup)
 
 links = soup.find_all("a")
 
