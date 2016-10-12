@@ -92,6 +92,5 @@ def get_data_from_url(ur, page):
 			u = ur + ("&page=" + str(i + 1))
 		get_information(u)
 
-
 result = 1
 get_data_from_url(url, 10)
