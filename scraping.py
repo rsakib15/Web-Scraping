@@ -2,45 +2,44 @@ import requests
 from bs4 import BeautifulSoup
 
 url = "http://www.yellowpages.com/search?search_terms=cofee&geo_location_terms=Los%20Angeles%2C%20CA"
-result = 1
+
+
 
 def get_information(u):
 	r = requests.get(u)
-	#print(r.content)
+	# print(r.content)
 
 	soup = BeautifulSoup(r.content, "html.parser")
-	#print(soup)
+	# print(soup)
 
 	links = soup.find_all("a")
 
-	#for link in links:
-		#print(link.get("href"))
+	# for link in links:
+	# print(link.get("href"))
 
-	#for link in links:
-		#print(link.text)
+	# for link in links:
+	# print(link.text)
 
-	#for link in links:
-		#print(link.text, link.get("href"))
+	# for link in links:
+	# print(link.text, link.get("href"))
 
-	#for link in links:
-		#print("<a href='%s'>%s</a>" % (link.get("href"), link.text))
+	# for link in links:
+	# print("<a href='%s'>%s</a>" % (link.get("href"), link.text))
 
 	g_data = soup.find_all("div", {"class": "info"})
-	#print(g_data)
+	# print(g_data)
 
-	#for item in g_data:
-		#print(item.text)
+	# for item in g_data:
+	# print(item.text)
 
-	#for item in g_data:
-		#print(item.contents[0].text)
-		#print(item.contents[1].text)
+	# for item in g_data:
+	# print(item.contents[0].text)
+	# print(item.contents[1].text)
 
 
 	for item in g_data:
 		print("----------------------------------------")
 		print("----------------------------------------")
-		print("Searching Result: " + str(result))
-		result += 1
 
 		try:
 			print("Name: " + item.contents[0].find_all("a", {"class": "business-name"})[0].text)
@@ -86,12 +85,14 @@ def get_information(u):
 			pass
 
 
+
 def get_data_from_url(ur, page):
 	for i in range(page):
 		u = ur
 		if i > 0:
 			u = ur + ("&page=" + str(i + 1))
 		get_information(u)
+		print(u)
 
 
 get_data_from_url(url, 10)
