@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "http://www.yellowpages.com/search?search_terms=cofee&geo_location_terms=Los+Angeles%2C+CA"
+url = "http://www.yellowpages.com/search?search_terms=cofee&geo_location_terms=Los+Angeles%2C+CA" 	#put your desired web-address
 r = requests.get(url);
 
 print(r.content)
